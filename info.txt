@@ -1,0 +1,106 @@
+Categories:-
+POST    ===>  CREATE CATEGORIES
+              http://localhost:5020/category/create
+{
+  "name" : "computers",
+  "icon" : "pc",
+  "color" : "black"
+}
+
+RESPONSE
+{
+  "success": true,
+  "message": "Category Created Successfully...",
+  "category": {
+    "name": "computers",
+    "icon": "pc",
+    "color": "black",
+    "_id": "6591083430a30a976034471f",
+    "__v": 0
+  }
+}
+
+
+GET     ===>  ALL CATEGORIES   
+              http://localhost:5020/category/getcategory
+
+
+GET     ===>  CATEGORIES BY ID
+              http://localhost:5020/category/getcategory/6583fc788f8ae9906c46c586
+
+
+PUT     ===> UPDATE CATEGORIES 
+             http://localhost:5020/category/update/6583fc788f8ae9906c46c586
+  {
+    "name": "Elect-Motorola",
+    "icon": "Elet",
+    "color": "555"
+  }
+
+  {
+    "name": "Elect-Motorola-Edge"
+  }
+
+
+DELETE  ===>  DELETE CATEGORIES BY ID
+              http://localhost:5020/category/delete/6591083430a30a976034471f
+
+
+
+
+
+PRODUCTS:-
+POST  ===>  CREATE PRODUCTS
+            http://localhost:5020/product/create
+
+{
+ "name" : "realme7", 
+ "description" : "mobile", 
+ "richDescription" :"new mobile", 
+ "image" :"mobile.png", 
+ "brand" : "Realme", 
+ "price" : "15000",
+ "category" : "659107bf30a30a976034471b",     //category id
+ "countInStock":"10", 
+ "rating" : 4,
+ "numReviews" : 20,
+ "isFeatured" : true
+}
+
+GET   ===>  GET ALL PRODUCTS
+            http://localhost:5020/product/getproducts
+
+
+GET   ===>  GET PRODUCT BY ID
+            http://localhost:5020/product/getproduct/659112f29fe26de60c663dfc
+  
+
+GET   ===>  GET SHORT PRODUCT
+            http://localhost:5020/product/getshortdetails
+{
+  "success": true,
+  "productList": [
+    {
+      "name": "realme7",
+      "image": "mobile.png",
+      "brand": "Realme",
+      "price": 15000
+    },
+  ]
+}
+
+PUT  ===> UPDATE PRODUCT
+          http://localhost:5020/product/update/6591110b9fe26de60c663df4
+
+
+DELETE ===> DELETE PRODUCT
+          http://localhost:5020/product/delete/6591110b9fe26de60c663df4
+
+
+GET   ===> PRODUCT COUNT
+           http://localhost:5020/product/get/count
+
+
+
+GET ===> FEATURED PRODUCT
+          http://localhost:5020/product/get/featured/2
