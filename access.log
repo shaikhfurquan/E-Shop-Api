@@ -17,7 +17,6 @@ GET /category/getcategory/65910cbda1428728f04733fc 200 127 - 2.486 ms
 GET /category/getcategory 200 313 - 13.996 ms
 POST /product/create 200 424 - 22.521 ms
 GET /product/getproducts 200 389 - 3.112 ms
-POST /product/create 400 49 - 2.534 ms
 POST /product/create 400 176 - 2.760 ms
 GET /product/getproducts 200 389 - 2.387 ms
 GET /product/getproduct/658d1cf0e93ddd982181d34c 200 31 - 2.279 ms
