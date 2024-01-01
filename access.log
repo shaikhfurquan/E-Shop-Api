@@ -5,11 +5,6 @@ GET /category/getcategory 200 303 - 17.882 ms
 DELETE /category/delete/6591083430a30a976034471f 200 61 - 4.012 ms
 GET /category/getcategory 200 213 - 2.593 ms
 DELETE /category/delete/6591083430a30a976034471f 404 64 - 9.489 ms
-DELETE /category/delete/6591083430a30a976034471 400 142 - 2.495 ms
-DELETE /category/delete/6591083430a30a976034471 400 37 - 8.662 ms
-DELETE /category/delete/6591083430a30a976034471 400 37 - 8.081 ms
-DELETE /category/delete/6591083430a30a976034471 400 37 - 1.972 ms
-DELETE /category/delete/6591083430a30a976034471 400 37 - 0.678 ms
 DELETE /category/delete/6591083430a30a976034471 400 37 - 0.840 ms
 DELETE /category/delete/6591083430a30a976034471 400 160 - 13.553 ms
 POST /category/create 201 162 - 25.741 ms
