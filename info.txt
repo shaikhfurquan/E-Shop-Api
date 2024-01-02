@@ -23,6 +23,7 @@ RESPONSE
 
 GET     ===>  ALL CATEGORIES   
               http://localhost:5020/category/getcategory
+              http://localhost:5020/product/getproducts?categories=65910cbda1428728f04733fc
 
 
 GET     ===>  CATEGORIES BY ID
@@ -103,4 +104,5 @@ GET   ===> PRODUCT COUNT
 
 
 GET ===> FEATURED PRODUCT
+          http://localhost:5020/product/get/featured
           http://localhost:5020/product/get/featured/2

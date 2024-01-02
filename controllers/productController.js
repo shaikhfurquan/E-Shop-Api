@@ -44,7 +44,11 @@ export const createProduct = async (req, res) => {
 //get all products
 export const getProducts = async (req, res) => {
     try {
-        const productList = await ProductModel.find().populate('category')
+        let filter = {}
+        if(req.query.categories) {
+            filter = {category : req.query.categories.split(',')}
+        }
+        const productList = await ProductModel.find(filter).populate('category')
 
         if (!productList) {
             res.status(500).json({

@@ -73,3 +73,14 @@ GET /product/get/featured/1 200 395 - 3.618 ms
 GET /product/get/featured/1 200 395 - 3.045 ms
 GET /product/get/featured/1 200 395 - 2.447 ms
 GET /product/get/featured/2 200 739 - 3.623 ms
+GET /product/getproducts 200 1300 - 51.135 ms
+GET /category/getcategory 200 313 - 5.613 ms
+GET /product/getproducts?categories=659107bf30a30a976034471b 200 33 - 5.385 ms
+GET /product/getproducts?categories=659107bf30a30a976034471b 200 33 - 2.964 ms
+GET /product/getproducts?categories=65910cbda1428728f04733fc 200 1300 - 7.673 ms
+GET /product/getproducts?categories=65910cbda1428728f04733fc,659107d530a30a976034471d 200 1300 - 20.153 ms
+GET /product/getproducts?categories=65910cbda1428728f04733fc 200 1300 - 9.982 ms
+GET /product/getproducts?categories=65910cbda1428728f04733fc,659107bf30a30a976034471b 200 1300 - 7.101 ms
+GET /product/getproducts?categories=65910cbda1428728f04733fc,659107bf30a30a976034471b 400 81 - 52.459 ms
+GET /product/getproducts 400 81 - 55.254 ms
+GET /product/getproducts 200 1396 - 53.721 ms
