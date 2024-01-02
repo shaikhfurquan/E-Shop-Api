@@ -19,20 +19,20 @@ export const createProduct = async (req, res) => {
         const product = await ProductModel.create({ name, description, richDescription, image, brand, price, category, countInStock, rating, numReviews, isFeatured })
 
         if (!product) {
-            return res.status(500).json({
+            return res.status(500).json({ 
                 success: false,
                 message: "Product Cannot Be Created..."
             })
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "Product created successfully",
             product
         })
 
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Unable to create product",
             error: error.message
@@ -51,18 +51,18 @@ export const getProducts = async (req, res) => {
         const productList = await ProductModel.find(filter).populate('category')
 
         if (!productList) {
-            res.status(500).json({
+            return res.status(500).json({
                 success: false,
                 message: "No Product Found..."
             })
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             productList
         })
 
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: error.message
         })
@@ -76,18 +76,18 @@ export const getShortProductsDetails = async (req, res) => {
         const productList = await ProductModel.find().select('name brand price image -_id')
 
         if (!productList) {
-            res.status(500).json({
+            return res.status(500).json({
                 success: false,
                 message: "No Product Found..."
             })
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             productList
         })
 
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: error.message
         })
@@ -104,7 +104,7 @@ export const getProductByID = async (req, res) => {
             message: "Product With This ID Not Found...",
         })
     }
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         product
     })
@@ -134,13 +134,13 @@ export const updateProductByID = async (req, res) => {
             })
         }
 
-        res.status(201).json({
+        return res.status(201).json({
             success: true,
             message: "Products Updated Successfully...",
             product
         })
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Unable To Update product...",
             error: error.message
@@ -184,7 +184,7 @@ export const getProductCounts = async (req, res) => {
                 message : "Unable to get product count"
             })
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             productCount: productCount
         })
@@ -204,12 +204,12 @@ export const featuredProducts = async (req, res) => {
         const count = req.params.count ? req.params.count : 0
         const featuredProduct = await ProductModel.find({isFeatured : true}).limit(+count)
         if(!featuredProduct){
-            res.status(500).json({
+           return  res.status(500).json({
                 success: false,
                 message : "Unable to get featured product"
             })
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             productProduct: featuredProduct
         })
