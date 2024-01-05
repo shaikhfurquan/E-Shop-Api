@@ -1,9 +1,9 @@
 import UserModel from "../models/userModel.js"
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken";
 
 
-
-export const createUser = async (req, res, next) => {
+export const createUser = async (req, res) => {
     try {
         const { name, email, password, confirmPassword, phone, isAdmin, street, zip, city, country } = req.body;
         console.log(req.body);
@@ -72,7 +72,7 @@ export const getUsers = async (req, res) => {
 }
 
 
-export const getUserByID = async (req, res) =>{
+export const getUserByID = async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.id).select('-password')
         return res.status(200).json({
@@ -91,29 +91,37 @@ export const getUserByID = async (req, res) =>{
 export const userLogin = async (req, res) => {
     try {
         //check if user exists or not
-        const user = await UserModel.findOne({email : req.body.email})
-    
-        if (!user){
+        const user = await UserModel.findOne({ email: req.body.email })
+
+        //if user is not found then
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 message: 'User not found, Register first'
             })
         }
-        if(user && bcrypt.compareSync(req.body.password , user.password)){
-            return res.status(200).json({
-                message : "Authenticated User"
-            })
-        }else{
-            return res.status(404).json({
-                success: false,
-                message : "Invalid Credentials"
-            })
-        }
-    
+
+        //if user found then we will verify his password
+        const isMatch = await bcrypt.compare(req.body.password, user.password)
+        if (!isMatch) return res.status(404).json({
+            success: false,
+            message: "Invalid Credentials..."
+        })
+
+        //if everything ok then we will send the token for the user
+        const token = jwt.sign({userId : user.id}, process.env.SEC_KEY, { expiresIn: '1h' })
+
+        return res.status(200).json({
+            success: true,
+            user,
+            token,
+        })
+
     } catch (error) {
         return res.status(400).json({
             success: false,
-            message: error.message
+            message: "All Fields are Required",
+            error: error.message
         })
     }
 }

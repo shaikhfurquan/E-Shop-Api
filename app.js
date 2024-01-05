@@ -10,6 +10,7 @@ import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import categoryRouter from "./routes/categoryRoute.js";
+import authJwt from "./helper/jwt.js";
 
 
 //dotenv setup
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(cors())
 app.options('*', cors())
 app.use(morgan('tiny'))
+app.use(authJwt)
 
 
 // Get the directory name using fileURLToPath and dirname
