@@ -234,3 +234,4 @@ GET /products/get/featured/0 200 803 - 3.533 ms
 GET /products/get/featured/1 200 427 - 2.635 ms
 GET /products/get/featured/1 200 427 - 15.041 ms
 POST /users/login 200 593 - 93.600 ms
+POST /users/login 200 613 - 176.742 ms
