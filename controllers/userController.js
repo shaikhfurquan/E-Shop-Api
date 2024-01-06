@@ -48,6 +48,45 @@ export const createUser = async (req, res) => {
 }
 
 
+export const userLogin = async (req, res) => {
+    try {
+        //check if user exists or not
+        const user = await UserModel.findOne({ email: req.body.email })
+
+        //if user is not found then
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found, Register first'
+            })
+        }
+
+        //if user found then we will verify his password
+        const isMatch = await bcrypt.compare(req.body.password, user.password)
+        if (!isMatch) return res.status(404).json({
+            success: false,
+            message: "Invalid Credentials..."
+        })
+
+        //if everything ok then we will send the token for the user
+        const token = jwt.sign({userId : user.id, isAdmin : user.isAdmin}, process.env.SEC_KEY, { expiresIn: '1h' })
+
+        return res.status(200).json({
+            success: true,
+            user,
+            token,
+        })
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: "All Fields are Required",
+            error: error.message
+        })
+    }
+}
+
+
 export const getUsers = async (req, res) => {
     try {
         // const userList = await UserModel.find().select('name, ema0il , phone')
@@ -88,40 +127,3 @@ export const getUserByID = async (req, res) => {
 }
 
 
-export const userLogin = async (req, res) => {
-    try {
-        //check if user exists or not
-        const user = await UserModel.findOne({ email: req.body.email })
-
-        //if user is not found then
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: 'User not found, Register first'
-            })
-        }
-
-        //if user found then we will verify his password
-        const isMatch = await bcrypt.compare(req.body.password, user.password)
-        if (!isMatch) return res.status(404).json({
-            success: false,
-            message: "Invalid Credentials..."
-        })
-
-        //if everything ok then we will send the token for the user
-        const token = jwt.sign({userId : user.id}, process.env.SEC_KEY, { expiresIn: '1h' })
-
-        return res.status(200).json({
-            success: true,
-            user,
-            token,
-        })
-
-    } catch (error) {
-        return res.status(400).json({
-            success: false,
-            message: "All Fields are Required",
-            error: error.message
-        })
-    }
-}

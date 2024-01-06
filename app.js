@@ -10,7 +10,8 @@ import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import categoryRouter from "./routes/categoryRoute.js";
-import authJwt from "./helper/jwt.js";
+import authJwt from "./helpers/jwt.js";
+import  {errorHandler}  from "./helpers/error-handler.js";
 
 
 //dotenv setup
@@ -20,11 +21,13 @@ const PORT = process.env.PORT || 5000
 
 
 //Express Middlewares
-app.use(express.json());
 app.use(cors())
 app.options('*', cors())
+app.use(express.json());
 app.use(morgan('tiny'))
-app.use(authJwt)
+app.use(authJwt())
+//Authentication Error Handeling Middlewares
+app.use(errorHandler)
 
 
 // Get the directory name using fileURLToPath and dirname
@@ -41,10 +44,10 @@ app.use(morgan('tiny', { stream: accessLogStream }));
 
 
 //Routes
-app.use('/product',productRouter)
-app.use('/user',userRouter)
-app.use('/order',orderRouter)
-app.use('/category',categoryRouter)
+app.use('/products',productRouter)
+app.use('/users',userRouter)
+app.use('/orders',orderRouter)
+app.use('/categories',categoryRouter)
 
 
 //connection of mongodb
