@@ -127,3 +127,39 @@ export const getUserByID = async (req, res) => {
 }
 
 
+export const getUserCount = async (req, res) => {
+    const userCount = await UserModel.countDocuments()
+
+    if(!userCount){
+        return res.status(500).json({success: false, message:"User not found"})
+    }
+    res.json({
+        success: true,
+        user : userCount
+    })
+}
+
+
+export const deleteUserByID = async (req, res) => {
+    try {
+        const user = await UserModel.findByIdAndDelete(req.params.id)
+        if (user) {
+            return res.status(200).json({
+                success: true,
+                message: "User Deleted Successfully..."
+            })
+        } else {
+            return res.status(404).json({
+                success: false,
+                message: "User With This ID Not Found..."
+            })
+        }
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            error: error.message
+        })
+    }
+}
+
+
