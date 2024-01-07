@@ -6,7 +6,7 @@ const authJwt = () => {
     return expressJwt({
         secret,
         algorithms: ['HS256'],
-
+        isRevoked :  isRevoked,
     }).unless({
         path :[
             {url : /products(.*)/ , method : ['GET' , 'OPTIONS']},
@@ -16,6 +16,11 @@ const authJwt = () => {
     })
 };
 
-
+async function isRevoked(req, payload, done) {
+    if(!payload.isAdmin){
+        done(null, true)
+    }
+    done()
+}
 
 export default authJwt;
