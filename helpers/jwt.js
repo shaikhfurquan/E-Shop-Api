@@ -11,14 +11,16 @@ const authJwt = () => {
         path :[
             {url : /products(.*)/ , method : ['GET' , 'OPTIONS']},
             {url : /categories(.*)/ , method : ['GET' , 'OPTIONS']},
-            {url : '/users/login' , method : ['POST' , 'OPTIONS']}
+            '/users/login',
+            '/users/create',
+
         ]
     })
 };
 
 async function isRevoked(req, payload, done) {
     if(!payload.isAdmin){
-        done(null, true)
+        done(null, true) 
     }
     done()
 }

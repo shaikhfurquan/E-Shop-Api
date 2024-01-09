@@ -9,10 +9,10 @@ export const errorHandler = (err, req, res, next) => {
             message : "Ther user is not authorized" 
             
         })
-    }
+    } 
 
     //validation error handler
-    if(err.name === 'ValidationError'){
+    if(err.name === 'ValidationError'){ 
         return res.status(401).json({
             success : false,
             error : err,            
