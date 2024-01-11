@@ -264,3 +264,12 @@ POST /users/login 200 615 - 446.310 ms
 POST /users/login 200 613 - 184.651 ms
 POST /products/create 200 443 - 29.098 ms
 POST /products/create 200 443 - 8.237 ms
+GET /products/search/hp 404 157 - 3.274 ms
+GET /products/search/hp 400 163 - 14.768 ms
+GET /products/search/hp 400 163 - 16.545 ms
+GET /products/search/hp 400 163 - 5.227 ms
+GET /products/search/hp 400 163 - 2.541 ms
+GET /products/search/hp 400 163 - 16.353 ms
+GET /products/search/hp 400 163 - 16.396 ms
+GET /products/search/3300 400 165 - 4.101 ms
+GET /products/search/3300 400 114 - 4.542 ms

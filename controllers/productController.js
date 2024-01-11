@@ -223,3 +223,32 @@ export const featuredProducts = async (req, res) => {
         })
     }
 }
+
+//search api
+export const searchProduct = async (req, res) =>{
+    try {
+        const product = await ProductModel.find({
+            "$or" : [
+                {name :new {$regex : req.params.key}},
+                {isFeatured : {$regex : req.params.key}},
+                {brand : {$regex : req.params.key}},
+                {price : {$regex : req.params.key}},
+                {category : {$regex : req.params.key}},
+            ]
+        })
+        console.log("pro==>",product);
+        return res.status(200).json({
+            success : true,
+            message : "Success",
+            product : product
+        })
+        
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: "Error while searching products",
+            error: error.message
+
+        })
+    }
+}
