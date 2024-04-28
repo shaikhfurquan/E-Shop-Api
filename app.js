@@ -1,9 +1,9 @@
 import express  from "express";
 import dotenv from 'dotenv';
-import morgan from "morgan";
 import connectDB from "./db/connectDB.js";
-import fs from 'fs'
 import cors from 'cors';
+import fs from 'fs'
+import morgan from "morgan";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import productRouter from "./routes/productRoute.js";

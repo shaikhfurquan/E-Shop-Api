@@ -19,7 +19,7 @@ export const createProduct = async (req, res) => {
         const product = await ProductModel.create({ name, description, richDescription, image, brand, price, category, countInStock, rating, numReviews, isFeatured })
 
         if (!product) {
-            return res.status(500).json({ 
+            return res.status(500).json({
                 success: false,
                 message: "Product Cannot Be Created..."
             })
@@ -45,8 +45,8 @@ export const createProduct = async (req, res) => {
 export const getProducts = async (req, res) => {
     try {
         let filter = {}
-        if(req.query.categories) {
-            filter = {category : req.query.categories.split(',')}
+        if (req.query.categories) {
+            filter = { category: req.query.categories.split(',') }
         }
         const productList = await ProductModel.find(filter).populate('category')
 
@@ -178,10 +178,10 @@ export const deleteProductByID = async (req, res) => {
 export const getProductCounts = async (req, res) => {
     try {
         const productCount = await ProductModel.countDocuments({})
-        if(!productCount){
+        if (!productCount) {
             res.status(500).json({
                 success: false,
-                message : "Unable to get product count"
+                message: "Unable to get product count"
             })
         }
         return res.status(200).json({
@@ -202,11 +202,11 @@ export const getProductCounts = async (req, res) => {
 export const featuredProducts = async (req, res) => {
     try {
         const count = req.params.count ? req.params.count : 0
-        const featuredProduct = await ProductModel.find({isFeatured : true}).limit(+count)
-        if(!featuredProduct){
-           return  res.status(500).json({
+        const featuredProduct = await ProductModel.find({ isFeatured: true }).limit(+count)
+        if (!featuredProduct) {
+            return res.status(500).json({
                 success: false,
-                message : "Unable to get featured product"
+                message: "Unable to get featured product"
             })
         }
         return res.status(200).json({
@@ -225,24 +225,36 @@ export const featuredProducts = async (req, res) => {
 }
 
 //search api
-export const searchProduct = async (req, res) =>{
+export const searchProduct = async (req, res) => {
     try {
+        const { query } = req.params
+
+        // const product = await ProductModel.find({
+        //     "$or" : [
+        //         {name :new {$regex : req.params.key}},
+        //         {isFeatured : {$regex : req.params.key}},
+        //         {brand : {$regex : req.params.key}},
+        //         {price : {$regex : req.params.key}},
+        //         {category : {$regex : req.params.key}},
+        //     ]
+        // })
+
         const product = await ProductModel.find({
-            "$or" : [
-                {name :new {$regex : req.params.key}},
-                {isFeatured : {$regex : req.params.key}},
-                {brand : {$regex : req.params.key}},
-                {price : {$regex : req.params.key}},
-                {category : {$regex : req.params.key}},
+            $or: [
+                { name: { $regex: new RegExp(query, 'i') } },
+                // {isFeatured : {$regex : new RegExp(query , 'i)}},
+                { brand: { $regex: new RegExp(query, 'i') } },
+                // {price : {$regex : req.params.key}},
+                // {category : {$regex : req.params.key}},
             ]
         })
-        console.log("pro==>",product);
+        // console.log("pro==>", product);
         return res.status(200).json({
-            success : true,
-            message : "Success",
-            product : product
+            success: true,
+            message: "Success",
+            product: product
         })
-        
+
     } catch (error) {
         return res.status(400).json({
             success: false,

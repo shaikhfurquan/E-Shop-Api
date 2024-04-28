@@ -1,3 +1,48 @@
+USERS 
+POST ===> CREATE USER 
+          http://localhost:5020/user/create
+{
+    "name": "khan",
+    "email": "khan@gmail.com",
+    "password": "123",
+    "confirmPassword": "123",
+    "phone": "7769",
+    "isAdmin": false,
+    "street": "123 Main St",
+    "zip": "12345",
+    "city": "Example City",
+    "country": "Example Country"
+}
+RESPONSE:
+{
+  "success": true,
+  "message": "User registered successfully",
+  "user": {
+    "name": "khan",
+    "email": "khan@gmail.com",
+    "password": "$2b$10$1PqNRkPDdeWd4izwwgVHrecsrWCLT2.nAv9G1p2FlPDUQTR6qjSvu",
+    "phone": "7769",
+    "isAdmin": false,
+    "street": "123 Main St",
+    "zip": "12345",
+    "city": "Example City",
+    "country": "Example Country",
+    "_id": "659431f5acde280c580391aa",
+    "createdAt": "2024-01-02T15:55:33.703Z",
+    "updatedAt": "2024-01-02T15:55:33.703Z",
+    "__v": 0,
+    "id": "659431f5acde280c580391aa"
+  }
+}
+
+GET ===> GET USERS
+          http://localhost:5020/user/getusers
+
+
+GET ===> GET USERS BY ID
+          http://localhost:5020/user/getuser/659431f5acde280c580391aa
+
+
 Categories:-
 POST    ===>  CREATE CATEGORIES
               http://localhost:5020/category/create
@@ -109,47 +154,7 @@ GET ===> FEATURED PRODUCT
 
 
 
+GET ==> PRODUCT SEARCH API
+        http://localhost:5020/products/search/hp
+        http://localhost:5020/products/search/wash
 
-USERS 
-POST ===> CREATE USER 
-          http://localhost:5020/user/create
-{
-    "name": "khan",
-    "email": "khan@gmail.com",
-    "password": "123",
-    "confirmPassword": "123",
-    "phone": "7769",
-    "isAdmin": false,
-    "street": "123 Main St",
-    "zip": "12345",
-    "city": "Example City",
-    "country": "Example Country"
-}
-RESPONSE:
-{
-  "success": true,
-  "message": "User registered successfully",
-  "user": {
-    "name": "khan",
-    "email": "khan@gmail.com",
-    "password": "$2b$10$1PqNRkPDdeWd4izwwgVHrecsrWCLT2.nAv9G1p2FlPDUQTR6qjSvu",
-    "phone": "7769",
-    "isAdmin": false,
-    "street": "123 Main St",
-    "zip": "12345",
-    "city": "Example City",
-    "country": "Example Country",
-    "_id": "659431f5acde280c580391aa",
-    "createdAt": "2024-01-02T15:55:33.703Z",
-    "updatedAt": "2024-01-02T15:55:33.703Z",
-    "__v": 0,
-    "id": "659431f5acde280c580391aa"
-  }
-}
-
-GET ===> GET USERS
-          http://localhost:5020/user/getusers
-
-
-GET ===> GET USERS BY ID
-          http://localhost:5020/user/getuser/659431f5acde280c580391aa

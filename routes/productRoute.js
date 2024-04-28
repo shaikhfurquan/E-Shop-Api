@@ -10,7 +10,8 @@ productRouter.put('/update/:id' , updateProductByID)
 productRouter.delete('/delete/:id' , deleteProductByID)
 productRouter.get('/get/count' , getProductCounts)
 productRouter.get('/get/featured/:count' , featuredProducts)
-productRouter.get('/search/:key' , searchProduct)
+// productRouter.get('/search/:key' , searchProduct)
+productRouter.get('/search/:query' , searchProduct)
 
 
 export default productRouter;
