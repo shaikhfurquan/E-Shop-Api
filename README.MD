@@ -1,196 +1,291 @@
-# E-SHOP API Documentation
+# E-Shop API Documentation
 
 ## Available APIs
-
-### USERS
-- **POST**: Create a new user.
-- **GET**: Retrieve all users.
-- **GET**: Retrieve a user by ID.
-
-### CATEGORIES
-- **POST**: Create a new category.
-- **GET**: Retrieve all categories.
-- **GET**: Retrieve a category by ID.
-- **PUT**: Update an existing category.
-- **DELETE**: Delete a category by ID.
-
-### PRODUCTS
-- **POST**: Create a new product.
-- **GET**: Retrieve all products.
-- **GET**: Retrieve a product by ID.
-- **GET**: Retrieve a list of short product details.
-- **PUT**: Update an existing product.
-- **DELETE**: Delete a product by ID.
-- **GET**: Retrieve the total product count.
-- **GET**: Retrieve featured products.
-- **GET**: Search for products by keyword.
+- [User  APIs](#user-apis)
+  - [1. Create User](#1-create-user)
+  - [2. Get Users](#2-get-users)
+  - [3. Get User by ID](#3-get-user-by-id)
+- [Category APIs](#category-apis)
+  - [1. Create Categories](#1-create-categories)
+  - [2. Get All Categories](#2-get-all-categories)
+  - [3. Get Category by ID](#3-get-category-by-id)
+  - [4. Update Categories](#4-update-categories)
+  - [5. Delete Categories by ID](#5-delete-categories-by-id)
+- [Product APIs](#product-apis)
+  - [1. Create Products](#1-create-products)
+  - [2. Get All Products](#2-get-all-products)
+  - [3. Get Product by ID](#3-get-product-by-id)
+  - [4. Get Short Product Details](#4-get-short-product-details)
+  - [5. Update Product](#5-update-product)
+  - [6. Delete Product](#6-delete-product)
+  - [7. Get Product Count](#7-get-product-count)
+  - [8. Get Featured Products](#8-get-featured-products)
+  - [9. Product Search API](#9-product-search-api)
 
 ---
 
-## API Details
+## User APIs
 
-### USERS
-
-#### Create User
-- **Endpoint**: `POST http://localhost:5020/user/create`
-- **Request Body**:
-  ```json
-  {
-      "name": "khan",
-      "email": "khan@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "phone": "7769",
-      "isAdmin": false,
-      "street": "123 Main St",
-      "zip": "12345",
-      "city": "Example City",
-      "country": "Example Country"
-  }
-  ```
-- **Response**:
-  ```json
-  {
+### 1. Create User
+- **Endpoint:** `POST http://localhost:5020/user/create`
+- **Request Body:**
+    ```json
+    {
+        "name": "khan",
+        "email": "khan@gmail.com",
+        "password": "123",
+        "confirmPassword": "123",
+        "phone": "7769",
+        "isAdmin": false,
+        "street": "123 Main St",
+        "zip": "12345",
+        "city": "Example City",
+        "country": "Example Country"
+    }
+    ```
+- **Response:**
+    ```json
+    {
       "success": true,
-      "message": "User registered successfully",
+      "message": "User  registered successfully",
       "user": {
-          "name": "khan",
-          "email": "khan@gmail.com",
-          "password": "$2b$10$1PqNRkPDdeWd4izwwgVHrecsrWCLT2.nAv9G1p2FlPDUQTR6qjSvu",
-          "phone": "7769",
-          "isAdmin": false,
-          "street": "123 Main St",
-          "zip": "12345",
-          "city": "Example City",
-          "country": "Example Country",
-          "_id": "659431f5acde280c580391aa",
-          "createdAt": "2024-01-02T15:55:33.703Z",
-          "updatedAt": "2024-01-02T15:55:33.703Z",
-          "__v": 0,
-          "id": "659431f5acde280c580391aa"
+        "name": "khan",
+        "email": "khan@gmail.com",
+        "password": "$2b$10$1PqNRkPDdeWd4izwwgVHrecsrWCLT2.nAv9G1p2FlPDUQTR6qjSvu",
+        "phone": "7769",
+        "isAdmin": false,
+        "street": "123 Main St",
+        "zip": "12345",
+        "city": "Example City",
+        "country": "Example Country",
+        "_id": "659431f5acde280c580391aa",
+        "createdAt": "2024-01-02T15:55:33.703Z",
+        "updatedAt": "2024-01-02T15:55:33.703Z",
+        "__v": 0,
+        "id": "659431f5acde280c580391aa"
       }
-  }
-  ```
+    }
+    ```
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/user/create' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "khan",
+        "email": "khan@gmail.com",
+        "password": "123",
+        "confirmPassword": "123",
+        "phone": "7769",
+        "isAdmin": false,
+        "street": "123 Main St",
+        "zip": "12345",
+        "city": "Example City",
+        "country": "Example Country"
+    }'
+    ```
 
-#### Get All Users
-- **Endpoint**: `GET http://localhost:5020/user/getusers`
+### 2. Get Users
+- **Endpoint:** `GET http://localhost:5020/user/getusers`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/user/getusers'
+    ```
 
-#### Get User By ID
-- **Endpoint**: `GET http://localhost:5020/user/getuser/{id}`
+### 3. Get User by ID
+- **Endpoint:** `GET http://localhost:5020/user/getuser/{userId}`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/user/getuser/659431f5acde280c580391aa'
+    ```
 
 ---
 
-### CATEGORIES
+## Category APIs
 
-#### Create Category
-- **Endpoint**: `POST http://localhost:5020/category/create`
-- **Request Body**:
-  ```json
-  {
-      "name": "computers",
-      "icon": "pc",
-      "color": "black"
-  }
-  ```
-- **Response**:
-  ```json
-  {
+### 1. Create Categories
+- **Endpoint:** `POST http://localhost:5020/category/create`
+- **Request Body:**
+    ```json
+    {
+        "name": "computers",
+        "icon": "pc",
+        "color": "black"
+    }
+    ```
+- ** Response:**
+    ```json
+    {
       "success": true,
       "message": "Category Created Successfully...",
       "category": {
-          "name": "computers",
-          "icon": "pc",
-          "color": "black",
-          "_id": "6591083430a30a976034471f",
-          "__v": 0
+        "name": "computers",
+        "icon": "pc",
+        "color": "black",
+        "_id": "6591083430a30a976034471f",
+        "__v": 0
       }
-  }
-  ```
+    }
+    ```
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/category/create' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "computers",
+        "icon": "pc",
+        "color": "black"
+    }'
+    ```
 
-#### Get All Categories
-- **Endpoint**: `GET http://localhost:5020/category/getcategory`
+### 2. Get All Categories
+- **Endpoint:** `GET http://localhost:5020/category/getcategory`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/category/getcategory'
+    ```
 
-#### Get Category By ID
-- **Endpoint**: `GET http://localhost:5020/category/getcategory/{id}`
+### 3. Get Category by ID
+- **Endpoint:** `GET http://localhost:5020/category/getcategory/{categoryId}`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/category/getcategory/6583fc788f8ae9906c46c586'
+    ```
 
-#### Update Category
-- **Endpoint**: `PUT http://localhost:5020/category/update/{id}`
-- **Request Body**:
-  ```json
-  {
-      "name": "Elect-Motorola",
-      "icon": "Elet",
-      "color": "555"
-  }
-  ```
+### 4. Update Categories
+- **Endpoint:** `PUT http://localhost:5020/category/update/{categoryId}`
+- **Request Body:**
+    ```json
+    {
+        "name": "Elect-Motorola",
+        "icon": "Elet",
+        "color": "555"
+    }
+    ```
+- **CURL Example:**
+    ```bash
+    curl --location --request PUT 'http://localhost:5020/category/update/6583fc788f8ae9906c46c586' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "Elect-Motorola",
+        "icon": "Elet",
+        "color": "555"
+    }'
+    ```
 
-#### Delete Category By ID
-- **Endpoint**: `DELETE http://localhost:5020/category/delete/{id}`
+### 5. Delete Categories by ID
+- **Endpoint:** `DELETE http://localhost:5020/category/delete/{categoryId}`
+- **CURL Example:**
+    ```bash
+    curl --location --request DELETE 'http://localhost:5020/category/delete/6591083430a30a976034471f'
+    ```
 
 ---
 
-### PRODUCTS
+## Product APIs
 
-#### Create Product
-- **Endpoint**: `POST http://localhost:5020/product/create`
-- **Request Body**:
-  ```json
-  {
-      "name": "realme7", 
-      "description": "mobile", 
-      "richDescription": "new mobile", 
-      "image": "mobile.png", 
-      "brand": "Realme", 
-      "price": "15000",
-      "category": "659107bf30a30a976034471b", 
-      "countInStock": "10", 
-      "rating": 4,
-      "numReviews": 20,
-      "isFeatured": true
-  }
-  ```
+### 1. Create Products
+- **Endpoint:** `POST http://localhost:5020/product/create`
+- **Request Body:**
+    ```json
+    {
+        "name": "realme7",
+        "description": "mobile",
+        "richDescription": "new mobile",
+        "image": "mobile.png",
+        "brand": "Realme",
+        "price": "15000",
+        "category": "659107bf30a30a976034471b",
+        "countInStock": "10",
+        "rating": 4,
+        "numReviews": 20,
+        "isFeatured": true
+    }
+    ```
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/create' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "realme7",
+        "description": "mobile",
+        "richDescription": "new mobile",
+        "image": "mobile.png",
+        "brand": "Realme",
+        "price": "15000",
+        "category": "659107bf30a30a976034471b",
+        "countInStock": "10",
+        "rating": 4,
+        "numReviews": 20,
+        "isFeatured": true
+    }'
+    ```
 
-#### Get All Products
-- **Endpoint**: `GET http://localhost:5020/product/getproducts`
+### 2. Get All Products
+- **Endpoint:** `GET http://localhost:5020/product/getproducts`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/getproducts'
+    ```
 
-#### Get Product By ID
-- **Endpoint**: `GET http://localhost:5020/product/getproduct/{id}`
+### 3. Get Product by ID
+- **Endpoint:** `GET http://localhost:5020/product/getproduct/{productId}`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/getproduct/659112f29fe26de60c663dfc'
+    ```
 
-#### Get Short Product Details
-- **Endpoint**: `GET http://localhost:5020/product/getshortdetails`
-- **Response**:
-  ```json
-  {
+### 4. Get Short Product Details
+- **Endpoint:** `GET http://localhost:5020/product/getshortdetails`
+- **Response:**
+    ```json
+    {
       "success": true,
       "productList": [
-          {
-              "name": "realme7",
-              "image": "mobile.png",
-              "brand": "Realme",
-              "price": 15000
-          }
+        {
+          "name": "realme7",
+          "image": "mobile.png",
+          "brand": "Realme",
+          "price": 15000
+        }
       ]
-  }
-  ```
+    }
+    ```
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/getshortdetails'
+    ```
 
-#### Update Product
-- **Endpoint**: `PUT http://localhost:5020/product/update/{id}`
+### 5. Update Product
+- **Endpoint:** `PUT http://localhost:5020/product/update/{productId}`
+- **CURL Example:**
+    ```bash
+    curl --location --request PUT 'http://localhost:5020/product/update/6591110b9fe26de60c663df4'
+    ```
 
-#### Delete Product
-- **Endpoint**: `DELETE http://localhost:5020/product/delete/{id}`
+### 6. Delete Product
+- **Endpoint:** `DELETE http://localhost:5020/product/delete/{productId}`
+- **CURL Example:**
+    ```bash
+    curl --location --request DELETE 'http://localhost:5020/product/delete/6591110b9fe26de60c663df4'
+    ```
 
-#### Get Product Count
-- **Endpoint**: `GET http://localhost:5020/product/get/count`
+### 7. Get Product Count
+- **Endpoint:** `GET http://localhost:5020/product/get/count`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/get/count'
+    ```
 
-#### Get Featured Products
-- **Endpoint**: `GET http://localhost:5020/product/get/featured`
-- **Query Parameter**: Limit the number of featured products (e.g., `/get/featured/2`)
+### 8. Get Featured Products
+- **Endpoint:** `GET http://localhost:5020/product/get/featured`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/product/get/featured'
+    ```
 
-#### Search Products
-- **Endpoint**: `GET http://localhost:5020/products/search/{keyword}`
-
----
-
-## Notes
-- Replace `{id}` in the endpoints with the actual ID of the user, category, or product.
-- Ensure the server is running at `http://localhost:5020` before making API requests.
+### 9. Product Search API
+- **Endpoint:** `GET http://localhost:5020/products/search/{query}`
+- **CURL Example:**
+    ```bash
+    curl --location 'http://localhost:5020/products/search/hp'
+    ```
