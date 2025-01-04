@@ -28,7 +28,7 @@
 
 ### 1. Create User
 - **Endpoint:** `POST http://localhost:5020/user/create`
-- **Purpose:** Register a new user in the system.
+- **Description:** Register a new user in the system.
 - **Request Body:**
     ```json
     {
@@ -87,7 +87,7 @@
 
 ### 2. Get Users
 - **Endpoint:** `GET http://localhost:5020/user/getusers`
-- **Purpose:** Retrieve a list of all registered users (admin access required).
+- **Description:** Retrieve a list of all registered users (admin access required).
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/user/getusers'
@@ -95,7 +95,7 @@
 
 ### 3. Get User by ID
 - **Endpoint:** `GET http://localhost:5020/user/getuser/{userId}`
-- **Purpose:** Retrieve details of a specific user by their ID.
+- **Description:** Retrieve details of a specific user by their ID.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/user/getuser/659431f5acde280c580391aa'
@@ -107,7 +107,7 @@
 
 ### 1. Create Categories
 - **Endpoint:** `POST http://localhost:5020/category/create`
-- **Purpose:** Create a new product category in the system.
+- **Description:** Create a new product category in the system.
 - **Request Body:**
     ```json
     {
@@ -143,7 +143,7 @@
 
 ### 2. Get All Categories
 - **Endpoint:** `GET http://localhost:5020/category/getcategory`
-- **Purpose:** Retrieve a list of all product categories in the system.
+- **Description:** Retrieve a list of all product categories in the system.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/category/getcategory'
@@ -151,7 +151,7 @@
 
 ### 3. Get Category by ID
 - **Endpoint:** `GET http://localhost:5020/category/getcategory/{categoryId}`
-- **Purpose:** Retrieve details of a specific category by its ID.
+- **Description:** Retrieve details of a specific category by its ID.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/category/getcategory/6583fc788f8ae9906c46c586'
@@ -159,7 +159,7 @@
 
 ### 4. Update Categories
 - **Endpoint:** `PUT http://localhost:5020/category/update/{categoryId}`
-- **Purpose:** Update the details of an existing category.
+- **Description:** Update the details of an existing category.
 - **Request Body:**
     ```json
     {
@@ -181,7 +181,7 @@
 
 ### 5. Delete Categories by ID
 - **Endpoint:** `DELETE http://localhost:5020/category/delete/{categoryId}`
-- **Purpose:** Remove a category from the system by its ID.
+- **Description:** Remove a category from the system by its ID.
 - **CURL Example:**
     ```bash
     curl --location --request DELETE 'http://localhost:5020/category/delete/6591083430a30a976034471f'
@@ -193,7 +193,7 @@
 
 ### 1. Create Products
 - **Endpoint:** `POST http://localhost:5020/product/create`
-- **Purpose:** Add a new product to the system.
+- **Description:** Add a new product to the system.
 - **Request Body:**
     ```json
     {
@@ -231,7 +231,7 @@
 
 ### 2. Get All Products
 - **Endpoint:** `GET http://localhost:5020/product/getproducts`
-- **Purpose:** Retrieve a list of all products in the system.
+- **Description:** Retrieve a list of all products in the system.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/product/getproducts'
@@ -239,7 +239,7 @@
 
 ### 3. Get Product by ID
 - **Endpoint:** `GET http://localhost:5020/product/getproduct/{productId}`
-- **Purpose : Retrieve details of a specific product by its ID.
+- **Description:** Retrieve details of a specific product by its ID.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/product/getproduct/659112f29fe26de60c663dfc'
@@ -247,7 +247,7 @@
 
 ### 4. Get Short Product Details
 - **Endpoint:** `GET http://localhost:5020/product/getshortdetails`
-- **Purpose:** Retrieve a brief overview of products, including essential details like name, image, brand, and price.
+- **Description:** Retrieve a brief overview of products, including essential details like name, image, brand, and price.
 - **Response:**
     ```json
     {
@@ -269,7 +269,7 @@
 
 ### 5. Update Product
 - **Endpoint:** `PUT http://localhost:5020/product/update/{productId}`
-- **Purpose:** Update the details of an existing product.
+- **Description:** Update the details of an existing product.
 - **CURL Example:**
     ```bash
     curl --location --request PUT 'http://localhost:5020/product/update/6591110b9fe26de60c663df4' \
@@ -282,7 +282,7 @@
 
 ### 6. Delete Product
 - **Endpoint:** `DELETE http://localhost:5020/product/delete/{productId}`
-- **Purpose:** Remove a product from the system by its ID.
+- **Description:** Remove a product from the system by its ID.
 - **CURL Example:**
     ```bash
     curl --location --request DELETE 'http://localhost:5020/product/delete/6591110b9fe26de60c663df4'
@@ -290,7 +290,7 @@
 
 ### 7. Get Product Count
 - **Endpoint:** `GET http://localhost:5020/product/get/count`
-- **Purpose:** Retrieve the total count of products in the system.
+- **Description:** Retrieve the total count of products in the system.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/product/get/count'
@@ -298,7 +298,7 @@
 
 ### 8. Get Featured Products
 - **Endpoint:** `GET http://localhost:5020/product/get/featured`
-- **Purpose:** Retrieve a list of featured products.
+- **Description:** Retrieve a list of featured products.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/product/get/featured'
@@ -306,7 +306,7 @@
 
 ### 9. Product Search API
 - **Endpoint:** `GET http://localhost:5020/products/search/{query}`
-- **Purpose:** Search for products based on a query string.
+- **Description:** Search for products based on a query string.
 - **CURL Example:**
     ```bash
     curl --location 'http://localhost:5020/products/search/hp'
